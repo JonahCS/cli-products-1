@@ -58,6 +58,14 @@ prompt.get(['operation'], function (err, result) {
     case "C":
       prompt.get(['id', 'price', 'sku', 'name', 'quantity', 'description'], function (err, result) {
         let product = {
+               id : result.id,
+               price : result.price,
+               sku : result.sku,
+               name : result.name,
+               quantity : result.quantity,
+               description:result.description
+
+
           // use the user input to create this new Product object that we are going to pass into the createProduct()
         };
 

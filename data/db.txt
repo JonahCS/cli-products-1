@@ -1,6 +1,5 @@
-{ "price": 10, "sku": 123456, "name": "toaster", "quantity": 25, "description": "Stainless steel toaster, 4 slices", "id": 1  }
-{ "price": 1000, "sku": 123457, "name": "sofa", "quantity": 5, "description": "Velvet sofa, 8 feet", "id": 2 }
-{ "price": 250, "sku": 123458, "name": "desk", "quantity": 80, "description": "30 inch height office desk, black", "id": 3 }
-{ "price": 1, "sku": 123459, "name": "pen", "quantity": 2500, "description": "roller ball pen, blue ink", "id": 4 }
-{ "price": 3500,"sku": 123451, "name": "sculpture", "quantity": 2, "description": "Sculpture of Atlas, 36 inches tall, bronze", "id": 5 }
-{"price":500,"sku":66554,"name":"Widget","quantity":5000,"description":"Purple widget; all the kids will love them","id":6}
+{"price":1000,"sku":123457,"name":"sofa","quantity":5,"description":"Velvet sofa, 8 feet","id":2}
+{"price":250,"sku":123458,"name":"desk","quantity":80,"description":"30 inch height office desk, black","id":3}
+{"price":10,"sku":123456,"name":"toaster","quantity":25,"description":"Stainless steel toaster, 4 slices","id":1}
+{"price":1,"sku":123459,"name":"pen","quantity":2500,"description":"roller ball pen, blue ink","id":4}
+{"id":"5","price":"3500","sku":"123451","name":"\"sculpture\"","quantity":"2","description":"\"Sculpture of Atlas, 36 inches tall, bronze\""}
