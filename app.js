@@ -20,7 +20,7 @@ var prompt = require('prompt');
 import { getProductById, getAllProducts } from "./operations/read.js";
 import { removeProductById } from './operations/delete.js';
 import { createProduct } from './operations/create.js';
-
+import { updateProductById } from './operations/update.js';
 let fake = {
   price: 500,
   sku: 66554,
@@ -33,10 +33,11 @@ let fake = {
 prompt.start();
 
 console.log("Pick from the following operations:");
-console.log("A: list all products");
-console.log("I: find product by id")
-console.log("D: delete product by ID");
-console.log("C: create a new product");
+console.log("A: List All products");
+console.log("I: Find product by id")
+console.log("D: Delete product by ID");
+console.log("C: Create a new product");
+console.log("U: Update product")
 
 prompt.get(['operation'], function (err, result) {
   switch(result.operation) {
@@ -56,24 +57,30 @@ prompt.get(['operation'], function (err, result) {
       });
       break;
     case "C":
-      prompt.get(['id', 'price', 'sku', 'name', 'quantity', 'description'], function (err, result) {
+      prompt.get(['price', 'sku', 'name', 'quantity', 'description'], function (err, result) {
         let product = {
-               id : result.id,
-               price : result.price,
-               sku : result.sku,
+               
+               price : Number(result.price),
+               sku : Number(result.sku),
                name : result.name,
-               quantity : result.quantity,
+               quantity : Number(result.quantity),
                description:result.description
+           // use the user input to create this new Product object that we are going to pass into the createProduct()
+      };
 
-
-          // use the user input to create this new Product object that we are going to pass into the createProduct()
-        };
-
-
-        var result = createProduct(product);
+       var result = createProduct(product);
         console.log(product);
       });
       break;
+    
+    case "U":
+    prompt.get(['id'], function (err, result) {
+      
+      var product = updateProductById(result.id);
+      console.log(product);
+    });
+    break;
+ 
   }
 });
 
