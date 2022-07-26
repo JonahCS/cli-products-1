@@ -6,7 +6,7 @@ import { readDatabase } from '../data/import_db.js';
 import { getProductById } from './read.js';
 import fs from 'fs';
 
-let products = readDatabase("./data/db.txt");
+var products = readDatabase("./data/db.txt");
 
 export function updateProductById(id) {
     console.log("\nProducts Before Update");
@@ -56,9 +56,20 @@ export function updateProductById(id) {
     //add the updated entry
     product.id = Number(id);
     fs.appendFile('./data/db.txt', JSON.stringify(product)+"\n",null, function() {
+
         console.log("\nAll Products after update")
         products = readDatabase("./data/db.txt");
         console.log(products);
+        // fs.writeFile('./data/db.txt', '', null, function() {});
+        // for(let i = 1; i <= products.length; i++) {
+        //     for(let j = 0; j < products.length; j++) {
+        //         if(i == products[j].id){
+        //             let obj = JSON.stringify(products[j]);
+        //             fs.appendFile("./data/db.txt", obj+"\n", err => {if(err) console.error(err)})
+        //         }
+        //     }
+        // }
+        // console.log(products);
     });
    });
 }
