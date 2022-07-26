@@ -5,7 +5,7 @@ import {readFileSync, promises as fsPromises} from 'fs';
 export function readDatabase(filename) {
   const contents = readFileSync(filename, 'utf-8');
 
-  const arr = contents.split(/\r?\n/);
+  const arr = contents.split(/\r?\n/); 
   let newArray = [];
 
   for(let i = 0; i < arr.length; i++) {

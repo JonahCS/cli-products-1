@@ -49,13 +49,13 @@ export function updateProductById(id) {
             }
    
             products = tempArray;
-            console.log("\n\nAll Products after deletion of the would-be-updated product : "+"\n\n")
+            console.log("\n\nAll Products after deletion of the would-be-updated product : ")
             console.log(products);
         }
     }
     //add the updated entry
     product.id = Number(id);
-    fs.appendFile('./data/db.txt', JSON.stringify(product),null, function() {
+    fs.appendFile('./data/db.txt', JSON.stringify(product)+"\n",null, function() {
         console.log("\nAll Products after update")
         products = readDatabase("./data/db.txt");
         console.log(products);
