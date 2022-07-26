@@ -9,12 +9,14 @@ import fs from 'fs';
 let products = readDatabase("./data/db.txt");
 
 export function updateProductById(id) {
+    console.log("\nProducts Before Update");
+    console.log(products);
     let product_match = false;
     let tempArray = products;
 
     let currentProduct = getProductById(id);
-     
-   console.log("Details for products id " + id + ":");
+   console.log("\nDetails for the product to be updated:") 
+   console.log("id: " + id);
    console.log("Price: "+ currentProduct.price);
    console.log("SKU: " + currentProduct.sku)
    console.log("Name: " + currentProduct.name)
@@ -22,7 +24,7 @@ export function updateProductById(id) {
    console.log("Description: " + currentProduct.description);
 
 
-    console.log("Enter the new product");
+    console.log("\nEnter the new product");
     prompt.get(['price', 'sku', 'name', 'quantity', 'description'], function (err, result) {
     
      let product = {
@@ -47,13 +49,17 @@ export function updateProductById(id) {
             }
    
             products = tempArray;
+            console.log("\n\nAll Products after deletion of the would-be-updated product : "+"\n\n")
             console.log(products);
         }
     }
     //add the updated entry
     product.id = Number(id);
-    fs.appendFile('./data/db.txt', JSON.stringify(product),null, function() {});
-    //console.log(products);
+    fs.appendFile('./data/db.txt', JSON.stringify(product),null, function() {
+        console.log("\nAll Products after update")
+        products = readDatabase("./data/db.txt");
+        console.log(products);
+    });
    });
 }
    

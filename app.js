@@ -24,7 +24,7 @@ import { updateProductById } from './operations/update.js';
 
 prompt.start();
 
-console.log("Pick from the following operations:");
+console.log("\nPick from the following operations:");
 console.log("A: List All products");
 console.log("I: Find product by id")
 console.log("D: Delete product by ID");
