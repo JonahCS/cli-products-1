@@ -21,14 +21,6 @@ import { getProductById, getAllProducts } from "./operations/read.js";
 import { removeProductById } from './operations/delete.js';
 import { createProduct } from './operations/create.js';
 import { updateProductById } from './operations/update.js';
-let fake = {
-  price: 500,
-  sku: 66554,
-  name: "Widget",
-  quantity: 5000,
-  description: "Purple widget; all the kids will love them",
-  id: 6
-}
 
 prompt.start();
 
@@ -76,8 +68,8 @@ prompt.get(['operation'], function (err, result) {
     case "U":
     prompt.get(['id'], function (err, result) {
       
-      var product = updateProductById(result.id);
-      console.log(product);
+      updateProductById(result.id);
+      
     });
     break;
  

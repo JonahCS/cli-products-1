@@ -3,6 +3,7 @@ const require = createRequire(import.meta.url);
 var prompt = require('prompt');
 
 import { readDatabase } from '../data/import_db.js';
+import { getProductById } from './read.js';
 import fs from 'fs';
 
 let products = readDatabase("./data/db.txt");
@@ -10,8 +11,30 @@ let products = readDatabase("./data/db.txt");
 export function updateProductById(id) {
     let product_match = false;
     let tempArray = products;
+
+    let currentProduct = getProductById(id);
      
-    // deleting the product 
+   console.log("Details for products id " + id + ":");
+   console.log("Price: "+ currentProduct.price);
+   console.log("SKU: " + currentProduct.sku)
+   console.log("Name: " + currentProduct.name)
+   console.log("Quantity: " + currentProduct.quantity);
+   console.log("Description: " + currentProduct.description);
+
+
+    console.log("Enter the new product");
+    prompt.get(['price', 'sku', 'name', 'quantity', 'description'], function (err, result) {
+    
+     let product = {
+            price : (result.price == "")?currentProduct.price:Number(result.price),
+            sku : (result.sku == "")?currentProduct.sku : Number(result.sku),
+            name : (result.name == "")?currentProduct.name :result.name,
+            quantity : (result.quantity =="") ? currentProduct.quantity : Number(result.quantity),
+            description:(result.description == "")?currentProduct.description : result.description
+        };
+       
+        
+        //remove the current entry
     for(let i = 0; i < products.length; i++) {
         if(products[i].id == id) {
             product_match = true;
@@ -24,30 +47,16 @@ export function updateProductById(id) {
             }
    
             products = tempArray;
-           //console.log(products);
-            
+            console.log(products);
         }
     }
-    console.log("Enter the new product");
-    prompt.get(['price', 'sku', 'name', 'quantity', 'description'], function (err, result) {
-    
-     let product = {
-            
-            price : Number(result.price),
-            sku : Number(result.sku),
-            name : result.name,
-            quantity : Number(result.quantity),
-            description:result.description
-        // use the user input to create this new Product object that we are going to pass into the createProduct()
-   };
-    product.id = id;
-    fs.appendFile('./data/db.txt', JSON.stringify(product), null, function() {});
-    return products;
-   // console.log(product);
+    //add the updated entry
+    product.id = Number(id);
+    fs.appendFile('./data/db.txt', JSON.stringify(product),null, function() {});
+    //console.log(products);
    });
-   //products = tempArray;
-   //return products;
-  }
+}
+   
 
 
 
