@@ -1,5 +1,2 @@
-{"price":7777,"sku":777777,"name":"SEVEN","quantity":7,"description":"SEVEN ELEVEN","id":1}
-{"price":8888,"sku":888888,"name":"EIGHT","quantity":8,"description":"EIGHT DAYS ","id":2}
-{"price":9999,"sku":999999,"name":"NINE","quantity":9,"description":"NINE IS MINE","id":3}
-{"price":2222,"sku":222222,"name":"TWO","quantity":2,"description":"TWO LITTLE BIRDS","id":4}
-{"price":1111,"sku":111111,"name":"ONE","quantity":1,"description":"ONE LOVE","id":5}
+
+

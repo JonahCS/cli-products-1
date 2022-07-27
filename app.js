@@ -17,10 +17,10 @@ const require = createRequire(import.meta.url);
 
 var prompt = require('prompt');
 
-import { getProductById, getAllProducts } from "./operations/read.js";
-import { removeProductById } from './operations/delete.js';
 import { createProduct } from './operations/create.js';
+import { getProductById, getAllProducts } from "./operations/read.js";
 import { updateProductById } from './operations/update.js';
+import { removeProductById } from './operations/delete.js';
 
 prompt.start();
 
@@ -60,7 +60,8 @@ prompt.get(['operation'], function (err, result) {
            // use the user input to create this new Product object that we are going to pass into the createProduct()
       };
 
-       var result = createProduct(product);
+        var result = createProduct(product);
+        console.log("\nThe newly created product is: ")
         console.log(product);
       });
       break;

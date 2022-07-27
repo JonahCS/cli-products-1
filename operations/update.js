@@ -56,18 +56,22 @@ export function updateProductById(id) {
     //add the updated entry
     product.id = Number(id);
     fs.appendFile('./data/db.txt', JSON.stringify(product)+"\n",null, function() {
-       // console.log("\nAll Products after update")
-        products = readDatabase("./data/db.txt");
-        products.sort((a,b) => {
-            return a.id - b.id;
-        })
-        fs.writeFile('./data/db.txt', '', null, function() {});
-       
+          
+          //reading the database db.txt after updated entry is appended and storing the content in products 
+          products = readDatabase("./data/db.txt");
+          //ordering the products by id in the products array after update
+          products.sort((a,b) => {
+              return a.id - b.id;
+          })
+          //clearing the contents of db.txt
+          fs.writeFile('./data/db.txt', '', null, function() {});
+         
+          //ordering the products in db.txt
         for(let i = 0; i < products.length; i++) {
-           // for each item convert to json string then write that string to db.txt
+          // for each item convert to json string then write that string to db.txt
             let obj = JSON.stringify(products[i]);
             fs.appendFileSync('./data/db.txt',obj+"\n");
-            //fs.appendFile("./data/db.txt", obj+"\n", err => {if(err) console.error(err)})
+          //fs.appendFile("./data/db.txt", obj+"\n", err => {if(err) console.error(err)})
         }
         console.log("\nAll Products after update");
         console.log(products);
