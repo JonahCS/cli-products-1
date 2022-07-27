@@ -66,9 +66,9 @@ prompt.get(['operation'], function (err, result) {
       break;
     
     case "U":
-    prompt.get(['id'], function (err, result) {
+    prompt.get(['idd'], function (err, result) {
       
-      updateProductById(result.id);
+      updateProductById(result.idd);
       
     });
     break;

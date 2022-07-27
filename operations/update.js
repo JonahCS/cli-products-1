@@ -56,23 +56,45 @@ export function updateProductById(id) {
     //add the updated entry
     product.id = Number(id);
     fs.appendFile('./data/db.txt', JSON.stringify(product)+"\n",null, function() {
-
-        console.log("\nAll Products after update")
+       // console.log("\nAll Products after update")
         products = readDatabase("./data/db.txt");
+        products.sort((a,b) => {
+            return a.id - b.id;
+        })
+        fs.writeFile('./data/db.txt', '', null, function() {});
+       
+        for(let i = 0; i < products.length; i++) {
+           // for each item convert to json string then write that string to db.txt
+            let obj = JSON.stringify(products[i]);
+            fs.appendFileSync('./data/db.txt',obj+"\n");
+            //fs.appendFile("./data/db.txt", obj+"\n", err => {if(err) console.error(err)})
+        }
+        console.log("\nAll Products after update");
         console.log(products);
-        // fs.writeFile('./data/db.txt', '', null, function() {});
-        // for(let i = 1; i <= products.length; i++) {
-        //     for(let j = 0; j < products.length; j++) {
-        //         if(i == products[j].id){
-        //             let obj = JSON.stringify(products[j]);
-        //             fs.appendFile("./data/db.txt", obj+"\n", err => {if(err) console.error(err)})
-        //         }
-        //     }
-        // }
-        // console.log(products);
+       
     });
-   });
-}
+});
+} 
+
+
+
+
+
+//Ordering the products after update
+// fs.writeFile('./data/db.txt', '', null, function() {});
+// for(let i = 1; i <= products.length; i++) {
+//    for(let j = 0; j < products.length; j++) { 
+//      if(i == products[j].id){
+//           let obj = JSON.stringify(products[j]);
+          //fs.appendFile("./data/db.txt", obj+"\n", err => {if(err) console.error(err)})
+//           fs.appendFile('./data/db.txt', obj+"\n",null, function(){});
+//       }
+//     }
+//   }
+ //  console.log("\nAll Products after Ordering")
+ //  products = readDatabase("./data/db.txt");
+ //  console.log(products); 
+
    
 
 
